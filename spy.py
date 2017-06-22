@@ -26,6 +26,15 @@ def add_status(current_status_message) :
             if len(new_status_message) > 0:
                 status_message.append(new_status_message)
                 updated_status_message = new_status_message
+                if updated_status_message.isspace():
+                    print 'you don\'t have any status..'
+                else:
+                    updated_status_message = updated_status_message.isstrip()
+                    print updated_status_message
+                #if new_status_message.isspace():
+                 #   print 'you don\'t have any status..'
+                #else:
+                 #   print updated_status_message
         elif default.upper() == 'Y' :
             item_position = 1
 
@@ -44,7 +53,9 @@ def add_status(current_status_message) :
                 print 'Your updated status message is: %s' % (updated_status_message)
 
             else:
+                updated_status_message.startswith(" ")
                 print 'You current don\'t have a status update'
+
 
 
 
@@ -166,8 +177,12 @@ def start_chat(spy) :
                     read_chat_history()
                 elif menu_choice == 6:
                     print 'your staus message here!\n'
-                    current_status_message = add_status(current_status_message)
-
+                    if current_status_message.startswith(" "):
+                        print 'you don\'t have status '
+                    elif current_status_message.isspace():
+                        print'you don\'t have any status..'
+                    else:
+                        current_status_message = add_status(current_status_message)
                 elif menu_choice == 7 :
                     print 'your friends are..\n'
                     for i in friends:
